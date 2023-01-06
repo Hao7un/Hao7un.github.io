@@ -26,20 +26,21 @@
 <meta property="og:site_name" content="Hao7un&#39;s Blog">
 <meta property="og:description" content="北航计算机组成课程设计 Project3 单周期CPU(Logisim)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://hao7un.github.io/BUAA-CO-P3/image-20230106235503538.png">
-<meta property="og:image" content="http://hao7un.github.io/BUAA-CO-P3/image-20230106235528989.png">
-<meta property="og:image" content="http://hao7un.github.io/BUAA-CO-P3/image-20230106235541564.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235551644.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235558525.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235606977.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235631553.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235655643.png">
-<meta property="og:image" content="http://hao7un.github.io/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235730970.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-whole.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235503538.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235528989.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235541564.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235551644.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235558525.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235606977.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235631553.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235655643.png">
+<meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235730970.png">
 <meta property="article:published_time" content="2023-01-05T17:10:38.000Z">
-<meta property="article:modified_time" content="2023-01-06T16:06:22.329Z">
+<meta property="article:modified_time" content="2023-01-06T16:30:29.317Z">
 <meta property="article:author" content="Haojun Yan">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://hao7un.github.io/BUAA-CO-P3/image-20230106235503538.png">
+<meta name="twitter:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-whole.png">
 
 
 <link rel="canonical" href="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/">
@@ -204,7 +205,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-07 00:06:22" itemprop="dateModified" datetime="2023-01-07T00:06:22+08:00">2023-01-07</time>
+      <time title="Modified: 2023-01-07 00:30:29" itemprop="dateModified" datetime="2023-01-07T00:30:29+08:00">2023-01-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -230,7 +231,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在经过P0以及课程的初期训练后，我们对Logisim这个工具已经有了较为熟练的掌握。那么在P3中，我们将使用Logisim搭建第一个单周期CPU，支持的指令集为{add,sub,lw,sw,lui,ori,jal,jr,beq}（MIPS）。在正式开始搭建单周期CPU前，可以先阅读《数字设计和计算机体系结构》中单周期CPU的部分，对CPU的设计流程先有一个初步的了解。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="单周期CPU与指令集综述"><a href="#单周期CPU与指令集综述" class="headerlink" title="单周期CPU与指令集综述"></a>单周期CPU与指令集综述</h3><p>首先我们需要理解一个最基本的事情：CPU的基本工作流程可以大致分为取指、取数以及执行（这种工作流程划分的思想在后续的CPU设计中会起到相当大的作用）<strong>1.取指</strong>：从IFU中读取指令并将其划分为不同的字段，将对应的字段输入到不同的部件之中。<strong>2.取数</strong>：根据指令解析出来的Rs、Rt（A1,A2）字段，在GRF中选取对应的寄存器读数（RD1,RD2），并将寄存器堆数据读出到后续的部件中。<strong>3.执行</strong>：执行操作大致可以包括数据在ALU进行运算，写&#x2F;读DM，写回GRF。</p>
 <p>我们在具体设计与搭建的时候可以<strong>参考</strong>《数字设计和计算机体系结构》中的单周期CPU架构，我们实际在P3要完成的工作会比该架构略微复杂一点。</p>
-<p>![](.&#x2F;BUAA-CO-P3&#x2F;截屏2023-01-06 23.58.29.png)</p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-whole.png"></p>
 <p>在学习MIPS指令集的时候，我们接触过R类型指令、I类型指令以及J类型指令的概念。基于这种指令分类的思想，我们将本单周期CPU要完成的指令集分以下三个类型：<strong>1.计算类</strong>:{add,sub,lui,ori,} <strong>2.存储类</strong>{sw,lw} <strong>3.分支跳转类</strong>{beq,jr,jal}。这样分类的原因是，在同一个类别中的指令所涉及到的单周期CPU中的部件与指令的数据通路也大致相同，在增加指令、调试或者进行拓展的时候集都会有非常大的帮助。在新增指令的时候，<strong>我们一定要先认真对照MIPS指令集中该指令的RTL语言描述</strong>，否则会导致CPU设计存在bug，而我们又需要大量的时间去进行调试。</p>
 <h3 id="模块化设计"><a href="#模块化设计" class="headerlink" title="模块化设计"></a>模块化设计</h3><p>尽管我们有黑书的单周期CPU设计图作为参考设计，有一定的Logisim设计基础，但初次进行工程量如此大的设计难免还是会不知所措 ，这时候<strong>模块化设计</strong>就显得格外重要。我们在设计单独的一个模块的时候，模块以外的设计对于正在设计的模块来说，仅仅是Input与Output而已。我们在设计这个模块的时候只需要完成<strong>对Input的数据执行操作，然后将Output输出</strong>就算完成任务了。而这些复杂的连线是等我们将全部模块均设计好后才应该考虑的事情。这个步骤有点像我们小时候玩积木，我们是先将不同的零件搭好，最后再拼接在一起，那么现在我们来分析下单周期CPU的零件要如何搭建。</p>
 <h4 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h4><p>ALU可以说是我们CPU中最核心的部件，因为ALU承担了大部分的计算工作，除了部分跳转指令不需要ALU外，基本大部分指令都依赖于ALU的运算结果。</p>
@@ -271,7 +272,7 @@
 </tbody></table>
 <p>我们在设计输入输出端口的时候，无需考虑SrcB的源操作数来自于哪里，因为那不是模块化设计中要担心的事情。我们只需要知道，有两个操作数输入到ALU中，我们对其执行某一个操作（取决于ALUOp），然后将其输出即可。注意在设计的过程中，最好将ALUOp二进制编码&#x2F;one-hot编码与指定的操作记录下来，减少后续的麻烦。</p>
 <p>ALU的设计如下：</p>
-<p><img src="/./BUAA-CO-P3/image-20230106235503538.png"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235503538.png"></p>
 <h4 id="EXT"><a href="#EXT" class="headerlink" title="EXT"></a>EXT</h4><p>EXT部件的主要功能为对I类型指令的16位立即数进行符号&#x2F;零拓展，并将结果输出，该部件设计较为简单，不在此赘述。</p>
 <p>EXT的输入输出端口如下：</p>
 <table>
@@ -299,7 +300,7 @@
 </tr>
 </tbody></table>
 <p>EXT的设计如下：</p>
-<p><img src="/./BUAA-CO-P3/image-20230106235528989.png"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235528989.png"></p>
 <h4 id="GRF"><a href="#GRF" class="headerlink" title="GRF"></a>GRF</h4><p>在P0的课下提交中，我们便已经设计过了GRF，如果当时设计没有问题的话可以直接移到我们P3的设计之中。GRF其实还是纸老虎，32个寄存器看起来十分复杂，但是其实大多都是复制黏贴的工作。在设计GRF的时候要特别注意以下三点：1.GRF中32个寄存器的连线是否都连接正确了，课下若没有De出来然后在课上测试暴雷了就比较难受了。2.DMX器件部件将“Three_state?”选项勾选为“Yes”，保证之前输入至寄存器的数据不被抹除。3.0号寄存器的值要始终保持为0</p>
 <p>GRF的输入输出端口如下：</p>
 <table>
@@ -357,7 +358,7 @@
 </tr>
 </tbody></table>
 <p>GRF的设计如下：</p>
-<p><img src="/./BUAA-CO-P3/image-20230106235541564.png"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235541564.png"></p>
 <h4 id="IFU"><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h4><p>在Logisim中，我们采用一个ROM存储器用来存储指令，这里需要注意的是Logisim中ROM部件采取的是<strong>按字寻址</strong>的方式，而我们输出的PC与next_PC均是以<strong>字节</strong>为单位的，因此我们在输入ROM的时候要将PC的低2位舍弃。按照教程，我们的ROM可以存储32条指令，则应当将**PC[6:2]**输入到ROM当中。</p>
 <p>IFU的输入输出端口如下：</p>
 <table>
@@ -395,7 +396,7 @@
 </tr>
 </tbody></table>
 <p>IFU的具体设计如下：</p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235551644.png" alt="image-20230106235551644"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235551644.png"></p>
 <h4 id="DM"><a href="#DM" class="headerlink" title="DM"></a>DM</h4><p>数据存储器DM一般与sw、lw等存储类指令高度挂钩，Addr信号告诉我们去哪一个地址单元读&#x2F;写信号，MemWrite告诉我们是否要写入到这个单元中。如果写入，就将WD写入到单元中；否则，就从这个单元读取数据到输出端口<strong>（但并不代表RD一定会被用上）</strong>。我们用RAM作为DM的存储模块，RAM同IFU中的ROM采取按字寻址的方式，故在输入RAM的信号中应该是要舍弃末两位的信号的。</p>
 <p>DM的输入输出端口如下：</p>
 <table>
@@ -438,7 +439,7 @@
 </tr>
 </tbody></table>
 <p>DM的具体设计如下：</p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235558525.png" alt="image-20230106235558525"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235558525.png"></p>
 <h4 id="NPC"><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h4><p>这个模块是黑书中并没有提及的，但是却十分有用：NPC的功能就是利用输入的数据计算出下一条指令所在的PC值，并将next_PC传给IFU模块中。如果我们不将其独立为一个模块，那么在宏观的设计上连线将会较为复杂。在设计前，我们先分析该单周期CPU需要实现的指令地址变化有哪几种情况：</p>
 <p>1&gt;PC+4，最基本的功能，即执行物理地址上的下一条指令</p>
 <p>2&gt;beq分支，next_PC &#x3D; PC+4+sign_extend(offset&lt;&lt;2)</p>
@@ -491,7 +492,7 @@
 </tr>
 </tbody></table>
 <p>NPC的具体设计如下：</p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235606977.png" alt="image-20230106235606977"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235606977.png"></p>
 <h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><p>控制单元是本次CPU设计的核心部件，也是设计难度较大的模块，但其实只要掌握了一定的设计规律，控制单元的设计也是一个按部就班的过程。控制器的核心其实是一个映射的过程：从Opcode与Funct两个字段映射到控制信号的相对应的取值。我们可以首先设计不同的控制信号，需要执行什么样的操作：</p>
 <p>示例如下，需要根据自己的CPU设计进行更改：</p>
 <table>
@@ -740,12 +741,12 @@
 <p>在得出这两张表后，我们可以开始正式的Logisim实现主控制器：</p>
 <p>我们基于cscore网站上<strong>和逻辑</strong>和<strong>或逻辑</strong>的设计思路进行实现即可，设计示例如下：</p>
 <p><strong>和逻辑：</strong>（这里可以稍微简化下连线，用tunnel代替复杂的连线）</p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235631553.png" alt="image-20230106235631553"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235631553.png" alt="image-20230106235631553"></p>
 <p><strong>或逻辑：</strong></p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235655643.png" alt="image-20230106235655643"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235655643.png" alt="image-20230106235655643"></p>
 <h3 id="单周期CPU整体连接"><a href="#单周期CPU整体连接" class="headerlink" title="单周期CPU整体连接"></a>单周期CPU整体连接</h3><p>至此，我们单周期CPU的所有部件都已经实现了，接下来的工作就是将这些部件都整合起来。</p>
 <p>本人的整合思路为：<strong>针对每一个模块的输入端口，思考输入端口的数据来源是哪里</strong>，有可能是直接连接其他模块的输出端口，也有可能是连接多路选择器MUX，MUX的数据又来自于其他模块的输出端口。在这部分中，特别要注意Logisim的连线，切忌连错端口！</p>
-<p><img src="/Users/yanhaojun/Desktop/blog/source/_posts/BUAA-CO-P3/image-20230106235730970.png" alt="image-20230106235730970"></p>
+<p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235730970.png" alt="image-20230106235730970"></p>
 <h3 id="单周期CPU调试"><a href="#单周期CPU调试" class="headerlink" title="单周期CPU调试"></a>单周期CPU调试</h3><p>我们搭建好了单周期CPU，就代表结束了吗？当然不是。我们写程序写个一两百行的代码，都要debug半天。对于这个复杂的CPU，我们需要更多的耐心与时间去对其进行调试并验证正确性。课下对CPU的调试是十分重要的，因为如果课下没有测出的bug在课上被强测测出，会非常搞心态。</p>
 <p>单周期CPU的调试思路可以按照课程网站上的测试思路进行：</p>
 <p><strong>计算类</strong>：0附近的数字、16位无符号边界，随机数，目标寄存器为0，寄存器极限值</p>
@@ -770,11 +771,14 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/06/BUAA-CO-P4/" rel="prev" title="BUAA_CO_P4">
-                  <i class="fa fa-chevron-left"></i> BUAA_CO_P4
+                <a href="/2023/01/06/hello-world/" rel="prev" title="The Beginning">
+                  <i class="fa fa-chevron-left"></i> The Beginning
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/01/06/BUAA-CO-P4/" rel="next" title="BUAA_CO_P4">
+                  BUAA_CO_P4 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
