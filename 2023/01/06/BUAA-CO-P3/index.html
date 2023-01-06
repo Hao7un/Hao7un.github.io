@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,29 +17,29 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hao7un.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="北航计算机组成课设 单周期CPU Logisim实现">
+    <meta name="description" content="北航计算机组成课程设计 Project3 单周期CPU(Logisim)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BUAA_CO_P3">
-<meta property="og:url" content="http://example.com/2023/01/06/BUAA-CO-P3/index.html">
-<meta property="og:site_name" content="Hao7un Blog">
-<meta property="og:description" content="北航计算机组成课设 单周期CPU Logisim实现">
-<meta property="og:locale" content="en_US">
+<meta property="og:url" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/index.html">
+<meta property="og:site_name" content="Hao7un&#39;sBlog">
+<meta property="og:description" content="北航计算机组成课程设计 Project3 单周期CPU(Logisim)">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-05T17:10:38.000Z">
-<meta property="article:modified_time" content="2023-01-05T17:11:33.330Z">
+<meta property="article:modified_time" content="2023-01-06T03:51:48.894Z">
 <meta property="article:author" content="Haojun Yan">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/01/06/BUAA-CO-P3/">
+<link rel="canonical" href="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/01/06/BUAA-CO-P3/","path":"2023/01/06/BUAA-CO-P3/","title":"BUAA_CO_P3"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://hao7un.github.io/2023/01/06/BUAA-CO-P3/","path":"2023/01/06/BUAA-CO-P3/","title":"BUAA_CO_P3"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>BUAA_CO_P3 | Hao7un Blog</title>
+<title>BUAA_CO_P3 | Hao7un'sBlog</title>
   
 
 
@@ -61,7 +61,10 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -69,20 +72,24 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">Hao7un Blog</p>
+      <p class="site-title">Hao7un'sBlog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A different universe in which you make a better move</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
 
 
 
@@ -92,19 +99,20 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E8%AF%BE%E8%AE%BEP3-%E5%8D%95%E5%91%A8%E6%9C%9FCPU-Logisim"><span class="nav-number">1.</span> <span class="nav-text">北航计算机组成课设P3  单周期CPU(Logisim)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-number">1.2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E4%B8%8E%E6%8C%87%E4%BB%A4%E9%9B%86%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.单周期CPU与指令集综述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.模块化设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1ALU"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.1ALU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2EXT"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.2EXT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3GRF"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">2.3GRF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4IFU"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">2.4IFU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5DM"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">2.5DM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6NPC"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">2.6NPC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7Controller"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">2.7Controller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E6%95%B4%E4%BD%93%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.单周期CPU整体连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%B0%83%E8%AF%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.单周期CPU调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8B%B1%E6%96%87%E7%BC%A9%E5%86%99%E5%AF%B9%E7%85%A7"><span class="nav-number">1.4.</span> <span class="nav-text">英文缩写对照</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -118,7 +126,7 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
   </nav>
@@ -144,8 +152,8 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/06/BUAA-CO-P3/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -153,13 +161,13 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hao7un Blog">
+      <meta itemprop="name" content="Hao7un'sBlog">
       <meta itemprop="description" content="BUAA SCSE">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="BUAA_CO_P3 | Hao7un Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="BUAA_CO_P3 | Hao7un'sBlog">
+      <meta itemprop="description" content="北航计算机组成课程设计 Project3 单周期CPU(Logisim)">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -172,15 +180,16 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="Created: 2023-01-06 01:10:38 / Modified: 01:11:33" itemprop="dateCreated datePublished" datetime="2023-01-06T01:10:38+08:00">2023-01-06</time>
+      <time title="创建时间：2023-01-06 01:10:38 / 修改时间：11:51:48" itemprop="dateCreated datePublished" datetime="2023-01-06T01:10:38+08:00">2023-01-06</time>
     </span>
 
   
 </div>
 
+            <div class="post-description">北航计算机组成课程设计 Project3 单周期CPU(Logisim)</div>
         </div>
       </header>
 
@@ -188,8 +197,217 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>北航计算机组成课设</p>
-<p>单周期CPU Logisim实现</p>
+        <h1 id="北航计算机组成课设P3-单周期CPU-Logisim"><a href="#北航计算机组成课设P3-单周期CPU-Logisim" class="headerlink" title="北航计算机组成课设P3  单周期CPU(Logisim)"></a>北航计算机组成课设P3  单周期CPU(Logisim)</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​		在经过P0以及课程的初期训练后，我们对Logisim这个工具已经有了较为熟练的掌握。那么在P3中，我们将使用Logisim搭建第一个单周期CPU，支持的指令集为**{add,sub,lw,sw,lui,ori,jal,jr,beq}**（MIPS）。在正式开始搭建单周期CPU前，可以先阅读《数字设计和计算机体系结构》中单周期CPU的部分，对CPU的设计流程先有一个初步的了解。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1-单周期CPU与指令集综述"><a href="#1-单周期CPU与指令集综述" class="headerlink" title="1.单周期CPU与指令集综述"></a>1.单周期CPU与指令集综述</h3><p>​		首先我们需要理解一个最基本的事情：CPU的基本工作流程可以大致分为取指、取数以及执行（这种工作流程划分的思想在后续的CPU设计中会起到相当大的作用）<strong>1.取指</strong>：从IFU中读取指令并将其划分为不同的字段，将对应的字段输入到不同的部件之中。<strong>2.取数</strong>：根据指令解析出来的Rs、Rt（A1,A2）字段，在GRF中选取对应的寄存器读数（RD1,RD2），并将寄存器堆数据读出到后续的部件中。<strong>3.执行</strong>：执行操作大致可以包括数据在ALU进行运算，写&#x2F;读DM，写回GRF。</p>
+<p>​		我们在具体设计与搭建的时候可以<strong>参考</strong>《数字设计和计算机体系结构》中的单周期CPU架构，我们实际在P3要完成的工作会比该架构略微复杂一点。</p>
+<p>![截屏2023-01-06 09.34.58](&#x2F;Users&#x2F;yanhaojun&#x2F;Desktop&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;BUAA-CO-P3&#x2F;截屏2023-01-06 09.34.58.png)</p>
+<p>​		在学习MIPS指令集的时候，我们接触过R类型指令、I类型指令以及J类型指令的概念。基于这种指令分类的思想，我们将本单周期CPU要完成的指令集分以下三个类型：<strong>1.计算类</strong>:{add,sub,lui,ori,} <strong>2.存储类</strong>{sw,lw} <strong>3.分支跳转类</strong>{beq,jr,jal}。这样分类的原因是，在同一个类别中的指令所涉及到的单周期CPU中的部件与指令的数据通路也大致相同，在增加指令、调试或者进行拓展的时候集都会有非常大的帮助。在新增指令的时候，<strong>我们一定要先认真对照MIPS指令集中该指令的RTL语言描述</strong>，否则会导致CPU设计存在bug，而我们又需要大量的时间去进行调试。</p>
+<h3 id="2-模块化设计"><a href="#2-模块化设计" class="headerlink" title="2.模块化设计"></a>2.模块化设计</h3><p>​		尽管我们有黑书的单周期CPU设计图作为参考设计，有一定的Logisim设计基础，但初次进行工程量如此大的设计难免还是会不知所措 ，这时候<strong>模块化设计</strong>就显得格外重要。我们在设计单独的一个模块的时候，模块以外的设计对于正在设计的模块来说，仅仅是Input与Output而已。我们在设计这个模块的时候只需要完成<strong>对Input的数据执行操作，然后将Output输出</strong>就算完成任务了。而这些复杂的连线是等我们将全部模块均设计好后才应该考虑的事情。这个步骤有点像我们小时候玩积木，我们是先将不同的零件搭好，最后再拼接在一起，那么现在我们来分析下单周期CPU的零件要如何搭建。</p>
+<h4 id="2-1ALU"><a href="#2-1ALU" class="headerlink" title="2.1ALU"></a>2.1ALU</h4><p>​		ALU可以说是我们CPU中最核心的部件，因为ALU承担了大部分的计算工作，除了部分跳转指令不需要ALU外，基本大部分指令都依赖于ALU的运算结果。</p>
+<p>ALU的输入输出端口如下：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SrcA [31:0]</td>
+<td>I</td>
+<td>32位输入数据，ALU的源操作数之一</td>
+</tr>
+<tr>
+<td>SrcB [31:0]</td>
+<td>I</td>
+<td>32位输入数据，ALU的源操作数之一</td>
+</tr>
+<tr>
+<td>ALUOp [2:0]</td>
+<td>I</td>
+<td>3位输入信号，选择ALU需要进行的操作</td>
+</tr>
+<tr>
+<td>Zero</td>
+<td>O</td>
+<td>1位输出信号，高电平代表ALUResult为0，低电平代表其不为0</td>
+</tr>
+<tr>
+<td>ALUResult</td>
+<td>O</td>
+<td>32位输出数据，代表ALU的计算结果</td>
+</tr>
+</tbody></table>
+<p>​		我们在设计输入输出端口的时候，无需考虑SrcB的源操作数来自于哪里，因为那不是模块化设计中要担心的事情。我们只需要知道，有两个操作数输入到ALU中，我们对其执行某一个操作（取决于ALUOp），然后将其输出即可。注意在设计的过程中，最好将ALUOp二进制编码&#x2F;one-hot编码与指定的操作记录下来，减少后续的麻烦。</p>
+<p>ALU的设计如下：</p>
+<p>​		</p>
+<h4 id="2-2EXT"><a href="#2-2EXT" class="headerlink" title="2.2EXT"></a>2.2EXT</h4><p>​		EXT部件的主要功能为对I类型指令的16位立即数进行符号&#x2F;零拓展，并将结果输出，该部件设计较为简单，不在此赘述。</p>
+<p>EXT的输入输出端口如下：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Imm [15:0]</td>
+<td>I</td>
+<td>16位输入信号，表示待进行拓展的立即数</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>I</td>
+<td>EXT选择信号，1：进行符号拓展至32位；0：进行零拓展至32位</td>
+</tr>
+<tr>
+<td>EXTImm [31:0]</td>
+<td>O</td>
+<td>32位输出信号，表示拓展后的立即数</td>
+</tr>
+</tbody></table>
+<p>EXT的设计如下：</p>
+<h4 id="2-3GRF"><a href="#2-3GRF" class="headerlink" title="2.3GRF"></a>2.3GRF</h4><p>​		在P0的课下提交中，我们便已经设计过了GRF，如果当时设计没有问题的话可以直接移到我们P3的设计之中。GRF其实还是纸老虎，32个寄存器看起来十分复杂，但是其实大多都是复制黏贴的工作。在设计GRF的时候要特别注意以下三点：1.GRF中32个寄存器的连线是否都连接正确了，课下若没有De出来然后在课上测试暴雷了就比较难受了。2.DMX器件部件将“Three_state?”选项勾选为“Yes”，保证之前输入至寄存器的数据不被抹除。3.0号寄存器的值要始终保持为0</p>
+<p>GRF的输入输出端口如下：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>异步复位信号，将32个寄存器的值全部清零</td>
+</tr>
+<tr>
+<td>WE3</td>
+<td>I</td>
+<td>写使能信号，高电平时向A3寄存器写入数据WD3；低电平时无效</td>
+</tr>
+<tr>
+<td>A1 [4:0]</td>
+<td>I</td>
+<td>5位输入信号，选择32个寄存器中的一个并将其数据输出至RD1端口</td>
+</tr>
+<tr>
+<td>A2 [4:0]</td>
+<td>I</td>
+<td>5位输入信号，选择32个寄存器中的一个并将其数据输出至RD2端口</td>
+</tr>
+<tr>
+<td>A3 [4:0]</td>
+<td>I</td>
+<td>5位输入信号，选择32个寄存器中的一个作为数据写入的目标寄存器</td>
+</tr>
+<tr>
+<td>WD3 [31:0]</td>
+<td>I</td>
+<td>32位输入数据，当WE3有效时向GRF中写入数据</td>
+</tr>
+<tr>
+<td>RD1 [31:0]</td>
+<td>O</td>
+<td>32位输出数据，输出A1中选择的寄存器中的数据</td>
+</tr>
+<tr>
+<td>RD2 [31:0]</td>
+<td>O</td>
+<td>32位输出数据，输出A2中选择的寄存器中的数据</td>
+</tr>
+</tbody></table>
+<h4 id="2-4IFU"><a href="#2-4IFU" class="headerlink" title="2.4IFU"></a>2.4IFU</h4><p>​		在Logisim中，我们采用一个ROM存储器用来存储指令，这里需要注意的是Logisim中ROM部件采取的是<strong>按字寻址</strong>的方式，而我们输出的PC与next_PC均是以<strong>字节</strong>为单位的，因此我们在输入ROM的时候要将PC的低2位舍弃。按照教程，我们的ROM可以存储32条指令，则应当将**PC[6:2]**输入到ROM当中。</p>
+<p>IFU的输入输出端口如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">信号名</th>
+<th align="left">方向</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">clk</td>
+<td align="left">I</td>
+<td align="left">时钟信号</td>
+</tr>
+<tr>
+<td align="left">reset</td>
+<td align="left">I</td>
+<td align="left">异步复位信号，将PC寄存器清零。1：复位；0：无效。</td>
+</tr>
+<tr>
+<td align="left">next_PC[31:0]</td>
+<td align="left">I</td>
+<td align="left">32位输入信号，下一条指令的地址</td>
+</tr>
+<tr>
+<td align="left">Instr[31:0]</td>
+<td align="left">O</td>
+<td align="left">32位输出信号，当前指令的机器码</td>
+</tr>
+<tr>
+<td align="left">PC[31:0]</td>
+<td align="left">O</td>
+<td align="left">32位输出信号，当前指令的地址</td>
+</tr>
+</tbody></table>
+<p>IFU的具体设计如下：</p>
+<h4 id="2-5DM"><a href="#2-5DM" class="headerlink" title="2.5DM"></a>2.5DM</h4><p>​		数据存储器DM一般与sw、lw等存储类指令高度挂钩，Addr信号告诉我们去哪一个地址单元读&#x2F;写信号，MemWrite告诉我们是否要写入到这个单元中。如果写入，就将WD写入到单元中；否则，就从这个单元读取数据到输出端口<strong>（但并不代表RD一定会被用上）</strong>。我们用RAM作为DM的存储模块，RAM同IFU中的ROM采取按字寻址的方式，故在输入RAM的信号中应该是要舍弃末两位的信号的。</p>
+<p>DM的输入输出端口如下：</p>
+<table>
+<thead>
+<tr>
+<th>信号名</th>
+<th>方向</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clk</td>
+<td>I</td>
+<td>时钟信号</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>I</td>
+<td>异步复位信号；高电平时将RAM复位，低电平时无效</td>
+</tr>
+<tr>
+<td>MemWrite</td>
+<td>I</td>
+<td>写使能信号，高电平时将WD中数据写入DM中，低电平时无效</td>
+</tr>
+<tr>
+<td>Addr [31:0]</td>
+<td>I</td>
+<td>32位输入信号，选择RAM中一个地址单元进行读写操作</td>
+</tr>
+<tr>
+<td>WD [31:0]</td>
+<td>I</td>
+<td>32位输入数据，待输入至DM中的数据</td>
+</tr>
+<tr>
+<td>RD [31:0]</td>
+<td>O</td>
+<td>32位输出数据，从DM中读出的数据</td>
+</tr>
+</tbody></table>
+<p>DM的具体设计如下：</p>
+<h4 id="2-6NPC"><a href="#2-6NPC" class="headerlink" title="2.6NPC"></a>2.6NPC</h4><h4 id="2-7Controller"><a href="#2-7Controller" class="headerlink" title="2.7Controller"></a>2.7Controller</h4><h3 id="3-单周期CPU整体连接"><a href="#3-单周期CPU整体连接" class="headerlink" title="3.单周期CPU整体连接"></a>3.单周期CPU整体连接</h3><h3 id="4-单周期CPU调试"><a href="#4-单周期CPU调试" class="headerlink" title="4.单周期CPU调试"></a>4.单周期CPU调试</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h2 id="英文缩写对照"><a href="#英文缩写对照" class="headerlink" title="英文缩写对照"></a>英文缩写对照</h2><p>IFU：取指令堆</p>
+<p>GRF：寄存器堆</p>
+<p>DM：数据存储器</p>
+<p>ALU：</p>
 
     </div>
 
@@ -203,8 +421,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/06/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2023/01/06/hello-world/" rel="prev" title="The Beginning">
+                  <i class="fa fa-chevron-left"></i> The Beginning
                 </a>
             </div>
             <div class="post-nav-item">
@@ -234,7 +452,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Haojun Yan</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
     </div>
@@ -247,7 +465,7 @@
     <span class="toggle-line"></span>
   </div>
   <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
