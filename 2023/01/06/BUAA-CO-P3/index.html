@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235655643.png">
 <meta property="og:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-20230106235730970.png">
 <meta property="article:published_time" content="2023-01-05T17:10:38.000Z">
-<meta property="article:modified_time" content="2023-01-06T16:30:29.317Z">
+<meta property="article:modified_time" content="2023-01-07T09:35:23.097Z">
 <meta property="article:author" content="Haojun Yan">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://hao7un.github.io/2023/01/06/BUAA-CO-P3/image-whole.png">
@@ -205,7 +205,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-07 00:30:29" itemprop="dateModified" datetime="2023-01-07T00:30:29+08:00">2023-01-07</time>
+      <time title="Modified: 2023-01-07 17:35:23" itemprop="dateModified" datetime="2023-01-07T17:35:23+08:00">2023-01-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -359,7 +359,7 @@
 </tbody></table>
 <p>GRF的设计如下：</p>
 <p><img src="/2023/01/06/BUAA-CO-P3/image-20230106235541564.png"></p>
-<h4 id="IFU"><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h4><p>在Logisim中，我们采用一个ROM存储器用来存储指令，这里需要注意的是Logisim中ROM部件采取的是<strong>按字寻址</strong>的方式，而我们输出的PC与next_PC均是以<strong>字节</strong>为单位的，因此我们在输入ROM的时候要将PC的低2位舍弃。按照教程，我们的ROM可以存储32条指令，则应当将**PC[6:2]**输入到ROM当中。</p>
+<h4 id="IFU"><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h4><p>在Logisim中，我们采用一个ROM存储器用来存储指令，这里需要注意的是Logisim中ROM部件采取的是<strong>按字寻址</strong>的方式，而我们输出的PC与next_PC均是以<strong>字节</strong>为单位的，因此我们在输入ROM的时候要将PC的低2位舍弃。按照教程，我们的ROM可以存储32条指令，则应当将PC[6:2]输入到ROM当中。</p>
 <p>IFU的输入输出端口如下：</p>
 <table>
 <thead>
@@ -771,14 +771,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/06/hello-world/" rel="prev" title="The Beginning">
-                  <i class="fa fa-chevron-left"></i> The Beginning
+                <a href="/2023/01/06/BUAA-CO-P4/" rel="prev" title="BUAA_CO_P4">
+                  <i class="fa fa-chevron-left"></i> BUAA_CO_P4
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/01/06/BUAA-CO-P4/" rel="next" title="BUAA_CO_P4">
-                  BUAA_CO_P4 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
