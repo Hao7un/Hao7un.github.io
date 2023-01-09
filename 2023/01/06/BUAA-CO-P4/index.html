@@ -27,7 +27,7 @@
 <meta property="og:description" content="北航计算机组成课程设计 Project4 单周期CPU(Verilog)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-01-05T17:10:38.000Z">
-<meta property="article:modified_time" content="2023-01-08T11:51:48.667Z">
+<meta property="article:modified_time" content="2023-01-09T05:29:20.519Z">
 <meta property="article:author" content="Haojun Yan">
 <meta name="twitter:card" content="summary">
 
@@ -194,7 +194,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-08 19:51:48" itemprop="dateModified" datetime="2023-01-08T19:51:48+08:00">2023-01-08</time>
+      <time title="Modified: 2023-01-09 13:29:20" itemprop="dateModified" datetime="2023-01-09T13:29:20+08:00">2023-01-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,7 +295,7 @@
 <p>2&gt;如果不需要新增控制信号，只是某个控制信号的取值变多了(比如ALUOp多了一个异或操作&#x2F;新的PC跳转方式)，那么就去对应的模块中增加新的操作，并且对新功能简单测试一下。</p>
 <p>3&gt;如果需要新增控制信号，那么这个指令大概率是需要条件判断了，下面以条件写寄存器堆为例：假设新增指令为Instr，对应的条件判断为condition，那么在数据通路中可以利用三目运算符在输入GRF的写使能信号中修改代码为：<code>is_Instr ? condition : RegWrite</code> 这样子判断可以保证condition不会影响其他指令的RegWrite的值。</p>
 <h3 id="Verilog-单周期CPU调试"><a href="#Verilog-单周期CPU调试" class="headerlink" title="Verilog 单周期CPU调试"></a>Verilog 单周期CPU调试</h3><p>Verilog单周期CPU的测试指令生成思路基本同P3，如果P3已经写好了测试的mips代码，其实可以直接再用来测试Verilog CPU的正确性。本部分主要想分享在调试Verilog单周期CPU中时的技巧与方法。</p>
-<p>1bug问题定位：我倾向于利用Verilog的波形图进行问题定位：在发现新的bug后，先观察数据通路上各个模块的输入、输出、中间变量的波形图是否正确，检查完后再看数据通路中wire的波形图是否正确。换句话说，就是先检查模块的正确性，再检查整体连线与框架的正确性。</p>
+<p>1&gt;bug问题定位：我倾向于利用Verilog的波形图进行问题定位：在发现新的bug后，先观察数据通路上各个模块的输入、输出、中间变量的波形图是否正确，检查完后再看数据通路中wire的波形图是否正确。换句话说，就是先检查模块的正确性，再检查整体连线与框架的正确性。</p>
 <p>2&gt;当某个信号为x：可以去检查reg类型的初始化问题，也有可能是DM&#x2F;IFU储存容量的问题。当某个信号为z：出现高阻态，检查该模块这个信号的端口与其他模块的连线是否连上了。</p>
 <p>当然，每个人都有不同的调试思路，采用$display等方法均是可以的，主要是要熟练掌握一个自己用的顺手的调试方法。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，P4的工作难度相对于P3来说较小，在本人看来，P4考验我们的核心能力有以下三点：</p>
