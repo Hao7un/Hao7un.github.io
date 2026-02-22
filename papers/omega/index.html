@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="OMeGa: Joint Optimization of Explicit Meshes and Gaussian Splats for Robust Scene-Level Surface Reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OMeGa: Joint Optimization of Explicit Meshes and Gaussian Splats</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Google Sans', sans-serif; }
+    .title.is-1 { font-size: 2.5rem; margin-top: 2rem; }
+    .author-block { display: inline-block; margin-right: 15px; font-size: 1.2rem;}
+    .institution-block { display: block; font-size: 1.1rem; color: #666; margin-top: 5px;}
+    .publication-links { margin-top: 20px; }
+    .link-block a { margin: 5px; }
+    .teaser-img, .method-img, .result-img { width: 100%; max-width: 800px; margin: 0 auto; display: block; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .caption { text-align: center; margin-top: 10px; font-size: 0.95rem; color: #555; }
+    .bullet-points li { margin-bottom: 10px; line-height: 1.5; }
+    .bibtex-wrapper { position: relative; }
+    .copy-btn {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(255,255,255,0.15); border: none; border-radius: 4px;
+      color: #ccc; cursor: pointer; padding: 4px 8px; font-size: 0.8rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.3); color: #fff; }
+    .copy-btn.copied { color: #48c774; }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">OMeGa: Joint Optimization of Explicit Meshes and Gaussian Splats for Robust Scene-Level Surface Reconstruction</h1>
+            
+            <h3 class="title is-4 publication-venue" style="color: #363636; font-weight: 600; margin-bottom: 1.5rem;">
+              WACV 2026 <span style="color: #e74c3c;">(Oral)</span>
+            </h3>
+            
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=9SDGjroAAAAJ&hl=zh-CN" target="_blank" style="color: #007bff; text-decoration: none;">Yuhang Cao</a><sup>1, *</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://hao7un.github.io" target="_blank" style="color: #007bff; text-decoration: none;">Haojun Yan</a><sup>2, *</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.au.tsinghua.edu.cn/en/info/1076/3239.htm" target="_blank" style="color: #007bff; text-decoration: none;">Danya Yao</a><sup>1</sup>
+              </span>
+            </div>
+  
+            <div class="is-size-5 publication-authors institution-block">
+              <span class="author-block"><sup>1</sup>Tsinghua University, China</span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Beihang University, China</span>
+            </div>
+            
+            <div class="is-size-6 publication-authors" style="margin-top: 5px; color: #666;">
+              <span class="author-block"><sup>*</sup>Equal contribution</span>
+            </div>
+  
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2509.24308" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-youtube"></i></span>
+                    <span>Video</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <img src="static/images/fig1_binding_strategy.png" alt="Teaser Image" class="teaser-img">
+      <p class="caption">
+        Figure 1.<strong>OMeGa</strong> jointly optimizes an explicit triangle mesh and 2D Gaussian splats, achieving high-quality scene-level surface reconstruction even in challenging indoor, texture-less regions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Neural rendering with Gaussian splatting has advanced novel view synthesis, and most methods reconstruct surfaces via post-hoc mesh extraction. However, existing methods suffer from two limitations: (i) inaccurate geometry in texture-less indoor regions, and (ii) the decoupling of mesh extraction from optimization, thereby missing the opportunity to leverage mesh geometry to guide splat optimization. 
+          </p>
+          <p>
+            In this paper, we present <strong>OMeGa</strong>, an end-to-end framework that jointly optimizes an explicit triangle mesh and 2D Gaussian splats via a flexible binding strategy, where spatial attributes of Gaussian Splats are expressed in the mesh frame and texture attributes are retained on splats. To further improve reconstruction accuracy, we integrate mesh constraints and monocular normal supervision into the optimization, thereby regularizing geometry learning. In addition, we propose a heuristic, iterative mesh-refinement strategy that splits high-error faces and prunes unreliable ones to further improve the detail and accuracy of the reconstructed mesh. OMeGa achieves state-of-the-art performance on challenging indoor reconstruction benchmarks, recovering highly accurate mesh structures while delivering comparable or superior novel view synthesis results compared to previous state-of-the-art methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
+        
+        <img src="static/images/fig2_framework_overview.png" alt="Method Pipeline" class="method-img" style="margin-bottom: 20px;">
+        <p class="caption">
+          Figure 2. Overview of the <strong>OMeGa</strong> framework.
+        </p>
+        <div class="content">
+          <p>Our proposed <strong>OMeGa</strong> framework introduces a tightly-coupled optimization paradigm. The key technical contributions include:</p>
+          <ul class="bullet-points">
+            <li><strong>End-to-end Joint Optimization:</strong> Unlike post-hoc mesh extraction methods, OMeGa directly and concurrently optimizes an explicit triangle mesh alongside 2D Gaussian splats.</li>
+            <li><strong>Flexible Binding Strategy:</strong> Spatial attributes of the splats are anchored to the mesh surface, ensuring geometric consistency, while texture attributes are retained on the splats to maintain high-fidelity rendering.</li>
+            <li><strong>Robust Geometry Regularization:</strong> We incorporate explicit mesh constraints (e.g., Laplacian smoothness) and monocular normal supervision directly into the pipeline to further inject geometric priors into the optimization.</li>
+            <li><strong>Heuristic Mesh Refinement:</strong> A heuristic, iterative strategy that automatically subdivides mesh faces with high errors and prunes unreliable faces, dynamically adapting the mesh topology to capture fine geometric details.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+
+        <div class="content has-text-centered" style="margin-bottom: 2.5rem;">
+          <p>
+            OMeGa achieves state-of-the-art performance on challenging indoor reconstruction benchmarks,
+            recovering highly accurate mesh structures while delivering comparable or superior novel view
+            synthesis results compared to previous methods.
+          </p>
+        </div>
+
+        <!-- (1) Quantitative Mesh Results -->
+        <div style="margin-bottom: 3rem;">
+          <h3 class="title is-4">1. Quantitative Mesh Reconstruction</h3>
+          <div class="content">
+            <p>
+              We evaluate mesh quality on the MuSHRoom, ScanNet and ScanNet++ benchmarks using Accuracy,
+              Completeness, Chamfer Distance, F-Score, and Normal Consistency.
+              OMeGa shows state-of-the-art reconstruction performance on all metrics.
+            </p>
+          </div>
+          <img src="static/images/tab1_qualitative_mesh.png" alt="Quantitative Mesh Results" class="result-img">
+          <p class="caption">
+            Table 1. Quantitative mesh reconstruction comparison on MuSHRoom, ScanNet and ScanNet++.
+          </p>
+        </div>
+
+        <!-- (2) Quantitative Rendering Results -->
+        <div style="margin-bottom: 3rem;">
+          <h3 class="title is-4">2. Quantitative Novel View Synthesis</h3>
+          <div class="content">
+            <p>
+              Rendering quality is evaluated using PSNR, SSIM, and LPIPS on MuSHRoom, ScanNet and ScanNet++.
+              Despite being constrained to an explicit mesh representation, OMeGa delivers rendering
+              quality comparable to or better than purely appearance-driven Gaussian methods.
+            </p>
+          </div>
+          <img src="static/images/tab2_qualitative_render.png" alt="Quantitative Rendering Results" class="result-img">
+          <p class="caption">
+            Table 2. Novel view synthesis comparison on MuSHRoom, ScanNet and ScanNet++.
+          </p>
+        </div>
+
+        <!-- (3) Qualitative Results on ScanNet++ -->
+        <div style="margin-bottom: 3rem;">
+          <h3 class="title is-4">3. Qualitative Results on ScanNet++</h3>
+          <div class="content">
+            <p>
+              Visual comparison of reconstructed meshes and rendered images on ScanNet++ scenes.
+              OMeGa recovers clean, complete geometry in challenging texture-less regions (walls, floors,
+              ceilings) where competing methods typically produce noisy surfaces.
+            </p>
+          </div>
+          <img src="static/images/fig3_scannetpp_qualitative.png" alt="Qualitative Comparison ScanNet++" class="result-img">
+          <p class="caption">
+            Figure 3. Qualitative comparison on ScanNet++. Each group shows the reconstructed mesh 
+            and the corresponding rendered image for OMeGa and baselines.
+          </p>
+        </div>
+
+        <!-- (4) Out-of-Distribution View Comparison -->
+        <div style="margin-bottom: 1rem;">
+          <h3 class="title is-4">4. Comparison on Out-of-Distribution Views</h3>
+          <div class="content">
+            <p>
+              To evaluate generalization beyond standard view interpolation, we compare OMeGa with the baseline 2DGS on camera viewpoints that deviate significantly from the training trajectory. While vanilla Gaussian Splatting methods often overfit to appearance within the captured distribution, they struggle to maintain coherence in unseen territory, leading to blurry artifacts. By anchoring Gaussians to an explicit mesh, OMeGa enforces rigorous structural consistency through mesh-derived geometric guidance. This enables high-fidelity rendering even for out-of-distribution poses where robust geometric priors are essential.
+            </p>
+          </div>
+          <img src="static/images/fig4_ood_rendering.png" alt="OOD View Comparison" class="result-img">
+          <p class="caption">
+            Figure 4. Comparison on out-of-distribution views.
+            OMeGa renders more geometrically consistent novel views while baselines exhibit significant
+            artifacts and blurring on out-of-distribution viewpoints.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <div class="bibtex-wrapper">
+      <button class="copy-btn" onclick="copyBibtex(this)" title="Copy BibTeX">
+        <i class="far fa-copy"></i>
+      </button>
+      <pre><code id="bibtex-entry">@article{cao2025omega,
+      title={OMeGa: Joint Optimization of Explicit Meshes and Gaussian Splats for Robust Scene-Level Surface Reconstruction},
+      author={Cao, Yuhang and Yan, Haojun and Yao, Danya},
+      journal={arXiv preprint arXiv:2509.24308},
+      year={2025}
+    }</code></pre>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function copyBibtex(btn) {
+    var text = document.getElementById('bibtex-entry').innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      btn.innerHTML = '<i class="fas fa-check"></i>';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.innerHTML = '<i class="far fa-copy"></i>';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
