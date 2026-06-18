@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparse-keyframe 4DGS — results</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#0e1117;color:#e6edf3;margin:0;padding:26px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:#9aa7b4;font-size:13px;margin:0 0 16px;line-height:1.5}
+  .top{display:flex;gap:14px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+  .grid{display:grid;grid-template-columns:170px repeat(5,minmax(280px,1fr));gap:11px;align-items:start}
+  .hd{font-weight:800;font-size:14px;text-align:center;padding:10px 6px;color:#cdd9e5;
+      background:#161b22;border:1px solid #2a313a;border-radius:10px}
+  .hd.lab{text-align:left;background:transparent;border:none}
+  .hd .ours{color:#f0883e}
+  .hd .small{font-weight:600;color:#9aa7b4;font-size:12px}
+  .rowlab{display:flex;flex-direction:column;gap:11px;padding-top:6px}
+  .rowlab .nm{font-weight:800;font-size:15px;line-height:1.2}
+  .rowlab .clip{color:#8b98a5;font-size:11.5px;font-family:'JetBrains Mono',monospace;word-break:break-all}
+  .cell{background:#161b22;border:1px solid #2a313a;border-radius:10px;overflow:hidden}
+  video{display:block;width:100%;height:auto;background:#000}
+  .vlab{font-size:11px;color:#8b98a5;padding:5px 8px;text-align:center;border-top:1px solid #21272f}
+  button{cursor:pointer;border:none;border-radius:8px;font-weight:700;font-family:inherit}
+  button.play{background:#2563eb;color:#fff;padding:9px 14px;font-size:13px;width:100%}
+  button.play.on{background:#dc2626}
+  button.allbtn{background:#334155;color:#fff;padding:10px 16px;font-size:14px}
+  button.allbtn.on{background:#dc2626}
+</style>
+</head>
+<body>
+  <h1>Sparse-keyframe dynamic 4DGS &mdash; results</h1>
+  <p class="sub">Rows = datasets &middot; Columns = <b>Ground truth</b>, then <b>full-keyframe</b> (NeoVerse vs <b style="color:#f0883e">Ours</b>), then <b>K=6 stitched</b> (NeoVerse vs <b style="color:#f0883e">Ours</b>) &mdash; <b style="color:#f0883e">Ours</b> = geom loss + static-vel, step&nbsp;3000.<br>
+     Each row's button plays / pauses its five videos together (same clip, synced). Videos are muted &amp; looping.</p>
+  <div class="top">
+    <button class="allbtn" id="allbtn" onclick="toggleAll()">&#9654; Play ALL rows</button>
+    <span class="sub" style="margin:0">tip: the per-row button is the synced play/pause; native controls let you scrub one video.</span>
+  </div>
+  <div class="grid" id="grid"></div>
+
+<script>
+const DATA = [
+ {name:"Synthetic cube — linear", clip:"synthcube_move",
+  v:["neoverse_baseline/synthcube_move/synthcube_move_gt.mp4",
+     "neoverse_baseline/synthcube_move/synthcube_move_fullkf_pred.mp4",
+     "p2_geom_move_sv/step_003000/p2_geom_move_sv_synthocc_synthcube_move_fullkf_pred.mp4",
+     "neoverse_baseline/synthcube_move/synthcube_move_kwin6_pred.mp4",
+     "p2_geom_move_sv/step_003000/p2_geom_move_sv_synthocc_synthcube_move_kwin6_pred.mp4"]},
+ {name:"Synthetic cube — circle", clip:"synthcube_circle",
+  v:["neoverse_baseline/synthcube_circle/synthcube_circle_gt.mp4",
+     "neoverse_baseline/synthcube_circle/synthcube_circle_fullkf_pred.mp4",
+     "p2_geom_circle_sv/step_003000/p2_geom_circle_sv_synthocc_synthcube_circle_fullkf_pred.mp4",
+     "neoverse_baseline/synthcube_circle/synthcube_circle_kwin6_pred.mp4",
+     "p2_geom_circle_sv/step_003000/p2_geom_circle_sv_synthocc_synthcube_circle_kwin6_pred.mp4"]},
+ {name:"DynamicReplica 071af6", clip:"071af6-7_obj_right",
+  v:["neoverse_baseline/071af6-7_obj_right/071af6-7_obj_right_gt.mp4",
+     "neoverse_baseline/071af6-7_obj_right/071af6-7_obj_right_fullkf_pred.mp4",
+     "p2_geom_071af6_sv/step_003000/p2_geom_071af6_sv_dynamicreplica_071af6-7_obj_right_fullkf_pred.mp4",
+     "neoverse_baseline/071af6-7_obj_right/071af6-7_obj_right_kwin6_pred.mp4",
+     "p2_geom_071af6_sv/step_003000/p2_geom_071af6_sv_dynamicreplica_071af6-7_obj_right_kwin6_pred.mp4"]},
+ {name:"DynamicReplica 6f8bbf", clip:"6f8bbf-3_obj_left",
+  v:["neoverse_baseline/6f8bbf-3_obj_left/6f8bbf-3_obj_left_gt.mp4",
+     "neoverse_baseline/6f8bbf-3_obj_left/6f8bbf-3_obj_left_fullkf_pred.mp4",
+     "p2_geom_6f8bbf_sv/step_003000/p2_geom_6f8bbf_sv_dynamicreplica_6f8bbf-3_obj_left_fullkf_pred.mp4",
+     "neoverse_baseline/6f8bbf-3_obj_left/6f8bbf-3_obj_left_kwin6_pred.mp4",
+     "p2_geom_6f8bbf_sv/step_003000/p2_geom_6f8bbf_sv_dynamicreplica_6f8bbf-3_obj_left_kwin6_pred.mp4"]},
+];
+const COLS = [["Ground truth","",false],["NeoVerse","full-keyframe",false],["Ours","full-keyframe",true],
+              ["NeoVerse","K=6 stitched",false],["Ours","K=6 stitched",true]];
+
+function el(t,c,html){const e=document.createElement(t); if(c)e.className=c; if(html!=null)e.innerHTML=html; return e;}
+const grid=document.getElementById('grid');
+grid.appendChild(el('div','hd lab',''));
+COLS.forEach(c=>grid.appendChild(el('div','hd',
+  `<span class="${c[2]?'ours':''}">${c[0]}</span><br><span class="small">${c[1]}</span>`)));
+DATA.forEach((d,i)=>{
+  const lab=el('div','rowlab',`<div class="nm">${d.name}</div><div class="clip">${d.clip}</div>`);
+  const btn=el('button','play','&#9654; Play'); btn.dataset.row=i; btn.onclick=()=>toggleRow(i,btn);
+  lab.appendChild(btn); grid.appendChild(lab);
+  d.v.forEach((src,j)=>{
+    const cell=el('div','cell','');
+    const vid=document.createElement('video');
+    vid.src=src; vid.muted=true; vid.loop=true; vid.playsInline=true; vid.preload='metadata'; vid.controls=true; vid.dataset.row=i;
+    cell.appendChild(vid);
+    cell.appendChild(el('div','vlab', COLS[j][1] ? `${COLS[j][0]} &middot; ${COLS[j][1]}` : COLS[j][0]));
+    grid.appendChild(cell);
+  });
+});
+function rowVids(i){return [...document.querySelectorAll(`video[data-row="${i}"]`)];}
+function toggleRow(i,btn){
+  const vs=rowVids(i);
+  if(btn.classList.contains('on')){vs.forEach(v=>v.pause()); btn.classList.remove('on'); btn.innerHTML='&#9654; Play';}
+  else{const t=vs[0].currentTime||0; vs.forEach(v=>{try{v.currentTime=t;}catch(e){} v.play();}); btn.classList.add('on'); btn.innerHTML='&#10073;&#10073; Pause';}
+}
+function toggleAll(){
+  const ab=document.getElementById('allbtn'); const on=ab.classList.contains('on');
+  DATA.forEach((d,i)=>{const btn=document.querySelector(`button.play[data-row="${i}"]`);
+    if(on && btn.classList.contains('on')) toggleRow(i,btn);
+    if(!on && !btn.classList.contains('on')) toggleRow(i,btn);});
+  ab.classList.toggle('on',!on); ab.innerHTML = on?'&#9654; Play ALL rows':'&#10073;&#10073; Pause ALL rows';
+}
+</script>
+</body>
+</html>
